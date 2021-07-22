@@ -1,0 +1,10 @@
+'''
+
+finish other Game
+
+create different tilesets and player and polish all together
+
+make weapons
+
+
+'''
