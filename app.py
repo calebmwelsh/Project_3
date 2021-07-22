@@ -5,28 +5,28 @@ from scripts._renderer import Renderer
 from scripts._world import World
 from scripts._assets import Assets
 
-# game object
-class Game:
+# app object
+class App:
     # initation
     def __init__(self):
-        # game attributes
+        # app attributes
         self.window = Window(self)
         self.input = Input(self)
         self.renderer = Renderer(self)
         self.assets = Assets(self)
         self.world = World(self)
 
-    # update game
+    # update app
     def update(self):
         self.input.update()
         self.world.update()
         self.renderer.render()
         self.window.render_frame()
 
-    # run game
+    # run app
     def run(self):
         while True:
             self.update()
 
-# game
-Game().run()
+# app
+App().run()

@@ -7,11 +7,11 @@ from .config import config
 
 
 class Window():
-    def __init__(self, game):
+    def __init__(self, app):
         # start pyagme window
         pygame.init()
-        # game
-        self.game = game
+        # app
+        self.app = app
         # retrieve config data
         self.scaled_res = config['window']['scaled_res']
         self.base_res = config['window']['base_res']
@@ -43,7 +43,7 @@ class Window():
     def render_frame(self):
         # display mouse img
         if self.mouse_img:
-            true_mouse_pos = (self.game.input.mouse_pos[0] - self.offset[0] - self.game.world.camera.pos[0] - self.mouse_img.get_width() // 2,self.game.input.mouse_pos[1] -self.offset[1] - self.game.world.camera.pos[1] - self.mouse_img.get_height() // 2)
+            true_mouse_pos = (self.app.input.mouse_pos[0] - self.offset[0] - self.app.world.camera.pos[0] - self.mouse_img.get_width() // 2,self.app.input.mouse_pos[1] -self.offset[1] - self.app.world.camera.pos[1] - self.mouse_img.get_height() // 2)
             self.display.blit(self.mouse_img,true_mouse_pos)
         # get display img data
         display_img = pygame.transform.scale(self.display,(int(self.display.get_width() * self.scaled_ratio[0]) , int(self.display.get_height() * self.scaled_ratio[1])))

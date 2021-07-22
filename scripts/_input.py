@@ -6,9 +6,9 @@ from .config import config
 from pygame.locals import *
 
 class Input():
-    def __init__(self, game):
-        # game
-        self.game = game
+    def __init__(self, app):
+        # app
+        self.app = app
         # all input states
         self.states = {}
         # mouse pos
@@ -45,8 +45,8 @@ class Input():
         # mouse pos
         x,y = pygame.mouse.get_pos()
         # scale mouse pos
-        temp_x =  int( x / self.game.window.scaled_res[0] * self.game.window.base_res[0])
-        temp_y =  int( y / self.game.window.scaled_res[1] * self.game.window.base_res[1])
+        temp_x =  int( x / self.app.window.scaled_res[0] * self.app.window.base_res[0])
+        temp_y =  int( y / self.app.window.scaled_res[1] * self.app.window.base_res[1])
         self.mouse_pos = (temp_x,temp_y)
 
         # soft reset

@@ -2,8 +2,8 @@
 
 
 class Renderer():
-    def __init__(self,game):
-        self.game = game
+    def __init__(self,app):
+        self.app = app
 
     def render(self):
-        self.game.world.render()
+        self.app.world.render()
