@@ -3,12 +3,18 @@ import pygame
 from pygame.locals import *
 
 
-
+# mouse img
 try:
     mouse_img = pygame.image.load(r'data\images\misc\mouse_img.png')
     mouse_img.set_colorkey((0,0,0))
 except FileNotFoundError:
     mouse_img = None
+# icon img
+try:
+    icon_img = pygame.image.load(r'data\images\misc\icon_img.png')
+    icon_img.set_colorkey((0,0,0))
+except FileNotFoundError:
+    icon_img = None
 
 
 
@@ -106,13 +112,15 @@ config = {
                 # scaled resoultion
                 'scaled_res': [ 900, 600 ],
                 # offset for screen
-                'offset':[-80,35],
+                'offset':[0,0],
                 # capion for game
-                'caption':'fun game',
+                'caption':'app',
                 # background color
                 'background_color' : (78, 149, 163),
                 # mouse img
-                'mouse_img': mouse_img
+                'mouse_img': mouse_img,
+                # icon img
+                'icon_img': icon_img
                 }
                 # window close ------------------------ #
 

@@ -17,11 +17,15 @@ class Window():
         self.base_res = config['window']['base_res']
         self.offset = config['window']['offset']
         self.mouse_img = config['window']['mouse_img']
+        self.icon_img = config['window']['icon_img']
         # scale ratio
         self.scaled_ratio = (self.scaled_res[0]/self.base_res[0],self.scaled_res[1]/self.base_res[1])
         # mouse display
         if self.mouse_img:
             pygame.mouse.set_visible(False)
+        # icon set
+        if self.icon_img:
+            pygame.display.set_icon(self.icon_img)
         # create window
         self.window = pygame.display.set_mode(self.scaled_res,0,32)
         # create window surf
