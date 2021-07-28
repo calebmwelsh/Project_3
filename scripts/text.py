@@ -6,9 +6,10 @@ from .core_fucs import *
 
 colorkey = (0, 0, 0)
 
-def load_font_img(path,color):
+def load_font_img(path,color,scale):
     global colorkey
     font_img = pygame.image.load(path)
+    font_img = pygame.transform.scale(font_img,(font_img.get_width() * scale,font_img.get_height() * scale))
     img_list = []
     corners_list = []
     start_pos = 0
@@ -16,9 +17,12 @@ def load_font_img(path,color):
         c = font_img.get_at((x, 0))
         c = (c[0], c[1], c[2])
         if c == (200, 200, 200):
-            corner = ((start_pos, 0), (x, font_img.get_height()))
-            start_pos = x + 1
-            corners_list.append(corner)
+            c = font_img.get_at((x - 1, 0))
+            c = (c[0], c[1], c[2])
+            if c != (200, 200, 200):
+                corner = ((start_pos, 0), (x, font_img.get_height()))
+                start_pos = x + scale
+                corners_list.append(corner)
     for corner in corners_list:
         width = abs(corner[0][0] - corner[1][0])
         height = abs(corner[0][1] - corner[1][1])
@@ -30,8 +34,8 @@ def load_font_img(path,color):
 
 
 class Font():
-    def __init__(self, path,color=(255,255,255)):
-        self.letter_imgs = load_font_img(path,color)
+    def __init__(self, path,color=(255,255,255),scale=1):
+        self.letter_imgs = load_font_img(path,color,scale)
         self.order_list = [
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
             'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
