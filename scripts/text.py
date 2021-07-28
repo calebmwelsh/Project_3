@@ -83,7 +83,7 @@ class Button():
         self.str = str
         self.rect_color = color
         self.rect = self.get_rect(str)
-        self.rect.x,self.rect.y = pos[0],pos[1]
+        self.rect.x,self.rect.y = pos[0], pos[1]
         # events
         self.click = False
         self.val = False
@@ -101,15 +101,16 @@ class Button():
                 offset += width + self.font.scale
 
         #create surf for letter to blit
-        self.surf = pygame.surface.Surface((offset,self.font.height))
+        self.surf = pygame.surface.Surface((offset + self.font.scale * 2,self.font.height + self.font.scale * 2))
 
         # blit letters on surf
-        offset = 0
+        offset = self.font.scale
+        height = self.font.scale
         for char in str:
             if char in self.font.order_list:
                 idx = self.font.order_list.index(char)
                 img, width = self.font.letter_imgs[idx]
-                self.surf.blit(img, (offset, 0))
+                self.surf.blit(img, (offset, height))
                 offset += width + self.font.scale
 
         # colorkey
