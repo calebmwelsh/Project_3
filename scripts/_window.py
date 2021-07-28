@@ -15,7 +15,8 @@ class Window():
         # retrieve config data
         self.scaled_res = config['window']['scaled_res']
         if self.scaled_res == 'full':
-            self.scaled_res = [int(pygame.display.Info().current_w),int(pygame.display.Info().current_h * .94)]
+            #self.scaled_res = [int(pygame.display.Info().current_w),int(pygame.display.Info().current_h * .94)]
+            self.scaled_res = [ 1536,600]
         self.base_res = config['window']['base_res']
         self.offset = config['window']['offset']
         self.mouse_img = config['window']['mouse_img']

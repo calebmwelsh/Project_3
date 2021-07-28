@@ -38,7 +38,7 @@ class Button():
 
         if rise == True:
             if pos_area == True:
-                screen.blit(self.image, (self.rect.x,self.rect.y - 10))
+                screen.blit(self.image, (self.rect.x,self.rect.y - self.image.get_size()[1] * .5))
             else:
                 screen.blit(self.image, self.rect)
         elif rise == False:

@@ -116,7 +116,7 @@ config = {
                 # capion for game
                 'caption':'app',
                 # background color
-                'background_color' : (0, 0, 0),
+                'background_color' : (255, 255, 255),
                 # mouse img
                 'mouse_img': mouse_img,
                 # icon img
