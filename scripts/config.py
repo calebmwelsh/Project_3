@@ -110,7 +110,7 @@ config = {
                 # base resoultion
                 'base_res': [ 300, 200 ],
                 # scaled resoultion
-                'scaled_res': [ 900, 600 ],
+                'scaled_res': 'full',
                 # offset for screen
                 'offset':[0,0],
                 # capion for game

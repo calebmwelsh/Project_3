@@ -113,3 +113,7 @@ class Input():
                                 # if mouse button in config is in events set states to true
                                 if event.button == peripheral[binding]['binding'][1]:
                                         self.states[binding] = False
+
+            # screen events
+            if event.type == VIDEORESIZE:
+                self.app.window.window = pygame.display.set_mode((event.w,event.h),pygame.RESIZABLE)

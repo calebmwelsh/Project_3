@@ -14,6 +14,8 @@ class Window():
         self.app = app
         # retrieve config data
         self.scaled_res = config['window']['scaled_res']
+        if self.scaled_res == 'full':
+            self.scaled_res = [int(pygame.display.Info().current_w),int(pygame.display.Info().current_h * .94)]
         self.base_res = config['window']['base_res']
         self.offset = config['window']['offset']
         self.mouse_img = config['window']['mouse_img']
@@ -27,7 +29,7 @@ class Window():
         if self.icon_img:
             pygame.display.set_icon(self.icon_img)
         # create window
-        self.window = pygame.display.set_mode(self.scaled_res,0,32)
+        self.window = pygame.display.set_mode(self.scaled_res,pygame.RESIZABLE)
         # create window surf
         self.display = pygame.surface.Surface(self.base_res)
         # set caption

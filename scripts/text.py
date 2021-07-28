@@ -1,19 +1,8 @@
 # Create a font
 import pygame, sys, math
 from pygame.locals import *
-from core_fucs import *
+from .core_fucs import *
 
-clock = pygame.time.Clock()
-pygame.init()
-pygame.display.set_caption('font')
-
-display_size = [600, 400]
-display_scale = 2
-particle_speed = 0.5
-particle_duration = 1
-particle_rate = 10
-screen = pygame.display.set_mode((display_size[0] * display_scale, display_size[1] * display_scale), 0, 32)
-display = pygame.Surface(display_size)
 
 colorkey = (0, 0, 0)
 
