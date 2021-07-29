@@ -9,7 +9,7 @@ colorkey = (0, 0, 0)
 def load_font_img(path,color,scale):
     global colorkey
     font_img = pygame.image.load(path)
-    font_img = pygame.transform.scale(font_img,(font_img.get_width() * scale,font_img.get_height() * scale))
+    font_img = pygame.transform.scale(font_img,(int(font_img.get_width() * scale),int(font_img.get_height() * scale)))
     img_list = []
     corners_list = []
     start_pos = 0

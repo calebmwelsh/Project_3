@@ -6,6 +6,7 @@ from .core_fucs import *
 
 COLORKEY = (0,0,0)
 
+# fonts
 font_1_gold = Font(r'data\font\font_image.png',(218,169,108),1)
 font_1_white = Font(r'data\font\font_image.png',(230, 234, 214),1)
 font_2_gold = Font(r'data\font\font_image.png',(218,169,108),2)
@@ -45,6 +46,12 @@ class Renderer():
         #self.tab_4 = Button_text(font_1_white,'Schedule',(20,50),self.app,(182,141,90))
         # task img
         self.task_button = Button_img(self.task_img,(self.app.window.display.get_width() - 20,7),self.app)
+        self.task_page = False
+        self.task_page_rect = pygame.rect.Rect(self.app.window.display.get_width() // 4,self.app.window.display.get_height() // 5,self.app.window.display.get_width() // 2 ,self.app.window.display.get_height() // 1.5 )
+        self.task_page_outline = pygame.rect.Rect(self.app.window.display.get_width() // 4,self.app.window.display.get_height() // 5 ,self.app.window.display.get_width() // 2 ,self.app.window.display.get_height() // 1.5 )
+
+
+
         # ------------------------------------------------------------------------------ #
 
         # schedule objects (rects and buttons) ------------------------------------------- #
@@ -98,8 +105,18 @@ class Renderer():
             self.page = 'groups'
 
         # task render
+        font_1_gold.render('Add',self.app.window.display,(int(self.app.window.display.get_width() * .85 ),2))
+        font_1_gold.render('Task',self.app.window.display,(int(self.app.window.display.get_width() * .83 ),15))
+
+        if self.task_page:
+            # rect and outline of task page
+            pygame.draw.rect(self.app.window.display,(240, 255, 255),self.task_page_rect)
+            pygame.draw.rect(self.app.window.display,(50,50,50),self.task_page_outline,1)
+
+
+        # check for event
         if self.task_button.render(self.app.window.display):
-            print(66)
+            self.task_page = True
 
 
 
