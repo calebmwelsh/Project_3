@@ -75,7 +75,7 @@ class Font():
 
 
 
-class Button():
+class Button_text():
     # button init
     def __init__(self,font,str,pos,app,color='black'):
         self.app = app
@@ -123,11 +123,13 @@ class Button():
 
 
     # render text as a button
-    def render(self, display, rise=False):
+    def render(self, display, rise=True):
         # button attributes
         action = False
         pos_area = False
+        # mouse pos
         pos = pygame.mouse.get_pos()
+        # scaled mouse pos
         pos = (pos[0] / self.app.window.scaled_ratio[0], pos[1] / self.app.window.scaled_ratio[1])
         #print(pos)
         mouse = pygame.mouse.get_pressed()
@@ -151,9 +153,50 @@ class Button():
         # render text
         if rise == True:
             if pos_area == True:
-                display.blit(self.surf, (self.rect.x,self.rect.y - self.surf.get_size()[1] * .5))
+                display.blit(self.surf, (self.rect.x,self.rect.y - self.surf.get_size()[1] * .3))
             else:
                 display.blit(self.surf, self.rect)
         elif rise == False:
             display.blit(self.surf, self.rect)
+        return action
+
+
+class Button_img():
+    def __init__(self, image, pos,app):
+        self.app = app
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.x,self.rect.y = pos[0],pos[1]
+        self.click = False
+        self.val = False
+
+    def render(self,screen,rise=True):
+        action = False
+        pos_area = False
+        # mouse pos
+        pos = pygame.mouse.get_pos()
+        # scaled mouse pos
+        pos = (pos[0] / self.app.window.scaled_ratio[0], pos[1] / self.app.window.scaled_ratio[1])
+        mouse = pygame.mouse.get_pressed()
+        # if down and pos action true
+        if self.rect.collidepoint(pos):
+            pos_area = True
+        if pos_area and self.click == False and mouse[0] == 1:
+            self.click = True
+            self.val = True
+        if pos_area and self.val == True and mouse[0] == 0:
+            action = True
+        if mouse[0] == 1:
+            self.click = True
+        if mouse[0] == 0:
+            self.click = False
+            self.val = False
+
+        if rise == True:
+            if pos_area == True:
+                screen.blit(self.image, (self.rect.x,self.rect.y - self.image.get_size()[1] * .3))
+            else:
+                screen.blit(self.image, self.rect)
+        elif rise == False:
+            screen.blit(self.image, self.rect)
         return action

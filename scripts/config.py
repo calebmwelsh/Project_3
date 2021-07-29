@@ -118,7 +118,7 @@ config = {
                 # background color
                 'background_color' : (230, 234, 214),
                 # mouse img
-                'mouse_img': mouse_img,
+                'mouse_img': None,
                 # icon img
                 'icon_img': icon_img
                 }
