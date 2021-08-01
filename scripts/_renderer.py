@@ -58,7 +58,7 @@ class Renderer():
             self.menu.render()
         # schedule page
         elif self.page == 'schedule':
-            self.schedule.render()
+            self.schedule.update()
         # homework page
         elif self.page == 'homework':
             self.homework.render()

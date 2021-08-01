@@ -170,7 +170,7 @@ class Button_img():
         self.click = False
         self.val = False
 
-    def render(self,screen,rise=True):
+    def render(self,surf,rise=True):
         action = False
         pos_area = False
         # mouse pos
@@ -194,9 +194,9 @@ class Button_img():
 
         if rise == True:
             if pos_area == True:
-                screen.blit(self.image, (self.rect.x,self.rect.y - self.image.get_size()[1] * .3))
+                surf.blit(self.image, (self.rect.x,self.rect.y - self.image.get_size()[1] * .3))
             else:
-                screen.blit(self.image, self.rect)
+                surf.blit(self.image, self.rect)
         elif rise == False:
-            screen.blit(self.image, self.rect)
+            surf.blit(self.image, self.rect)
         return action
