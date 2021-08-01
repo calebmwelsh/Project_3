@@ -13,7 +13,7 @@ font_2_gold = Font(r'data\font\font_image.png',(218,169,108),2)
 
 
 
-class Current_Events():
+class Assignment_Date():
     def __init__(self,app):
         self.app = app
         self.load_imgs()
@@ -27,8 +27,6 @@ class Current_Events():
 
     def init_obj(self):
         self.page = True
-
-
 
 
 

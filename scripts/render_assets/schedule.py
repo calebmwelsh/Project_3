@@ -8,6 +8,12 @@ from .schedule_assets.task import Task
 from .schedule_assets.day_type import Day_Type
 from .schedule_assets.new_event import New_Event
 from .schedule_assets.current_events import Current_Events
+# pages on pages lol
+from .schedule_assets.new_event_assets.class_name import Class_Name
+from .schedule_assets.new_event_assets.assignment_name import Assignment_Name
+from .schedule_assets.new_event_assets.assignment_date import Assignment_Date
+
+
 
 COLORKEY = (0,0,0)
 
@@ -21,10 +27,20 @@ font_2_gold = Font(r'data\font\font_image.png',(218,169,108),2)
 class Schedule():
     def __init__(self,app,renderer):
         self.app = app
+        # task page
         self.task = Task(app)
+        # day type page
         self.day_type = Day_Type(app)
+        # new event page
         self.new_event = New_Event(app)
+        # current event page
         self.current_events = Current_Events(app)
+        # class name page
+        self.class_name = Class_Name(app)
+        # asssignment name page
+        self.asssignment_name = Assignment_Name(app)
+        # assigment due data page
+        self.asssignment_date = Assignment_Date(app)
         self.load_imgs()
         self.init_obj()
 
@@ -101,6 +117,12 @@ class Schedule():
         # if user choses to create a new task
         if self.new_event.page:
             self.new_event.render()
+        '''
+        ------------ class name page ------------
+        '''
+        # if user choses to input class name
+        if self.class_name.page:
+            self.class_name.render()
         '''
         ------------- current events page --------------
         '''
