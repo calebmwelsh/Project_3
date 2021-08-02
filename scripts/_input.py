@@ -15,6 +15,8 @@ class Input():
         self.mouse_pos = (0,0)
         # input mode
         self.input_mode = 'core'
+        # user input
+        self.user_text = ''
         # reset all input states for initation
         self.full_reset()
 
@@ -58,61 +60,14 @@ class Input():
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
-                if event.key == K_b:
-                    pygame.quit()
-                    sys.exit()
+                # keyboard events
+                if event.key == K_BACKSPACE:
+                    self.user_text = self.user_text[:-1]
+                    #center_val -= 12
+                else:
+                    self.user_text += event.unicode
+                    #center_val += 12
 
-
-
-
-            # keyboard events
-            peripheral = config['input']['keyboard']
-            # key down events
-            if event.type == KEYDOWN:
-                # binding: jump, moving right, moving left, ect
-                for binding in peripheral:
-                    # if mode is all or input mode == core
-                    if set(peripheral[binding]['mode']).intersection({'all',self.input_mode}):
-                            # if key is a press or hold
-                            if peripheral[binding]['trigger'] in ['press','hold']:
-                                # if key in config is in events set states to true
-                                if event.key == peripheral[binding]['binding'][1]:
-                                        self.states[binding] = True
-            # key up events
-            if event.type == KEYUP:
-                # binding: jump, moving right, moving left, ect
-                for binding in peripheral:
-                    # if mode is all or input mode == core
-                    if set(peripheral[binding]['mode']).intersection({'all',self.input_mode}):
-                            # if key is a press or hold
-                            if peripheral[binding]['trigger'] in ['press','hold']:
-                                # if key in config is in events set states to true
-                                if event.key == peripheral[binding]['binding'][1]:
-                                        self.states[binding] = False
-            # mouse events
-            peripheral = config['input']['mouse']
-            # mousedown events
-            if event.type == MOUSEBUTTONDOWN:
-                # binding: jump, moving right, moving left, ect
-                for binding in peripheral:
-                    # if mode is all or input mode == core
-                    if set(peripheral[binding]['mode']).intersection({'all',self.input_mode}):
-                            # if key is a press or hold
-                            if peripheral[binding]['trigger'] in ['press','hold']:
-                                # if key in config is in events set states to true
-                                if event.button == peripheral[binding]['binding'][1]:
-                                        self.states[binding] = True
-            # mouseup events
-            if event.type == MOUSEBUTTONUP:
-                # binding: shoot, reload, change weapon ect
-                for binding in peripheral:
-                    # if mode is all or input mode == core
-                    if set(peripheral[binding]['mode']).intersection({'all',self.input_mode}):
-                            # if mouse button is a press or hold
-                            if peripheral[binding]['trigger'] in ['press','hold']:
-                                # if mouse button in config is in events set states to true
-                                if event.button == peripheral[binding]['binding'][1]:
-                                        self.states[binding] = False
 
             # screen events
             if event.type == VIDEORESIZE:

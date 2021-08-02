@@ -8,6 +8,7 @@ COLORKEY = (0,0,0)
 
 # fonts
 font_1_gold = Font(r'data\font\font_image.png',(218,169,108),1)
+font_1_black = Font(r'data\font\font_image.png',(0,1,0),1)
 font_1_white = Font(r'data\font\font_image.png',(230, 234, 214),1)
 font_2_gold = Font(r'data\font\font_image.png',(218,169,108),2)
 
@@ -24,6 +25,8 @@ class Class_Name():
         self.task_img = load_img(r'data\images\misc\schedule\add_task.png',COLORKEY)
         self.task_close_img = load_img(r'data\images\misc\schedule\close.png',COLORKEY)
         self.task_back_img = load_img(r'data\images\misc\schedule\back.png',COLORKEY)
+        font_1_black = Font(r'data\font\font_image.png','black',1)
+
 
     def init_obj(self):
         self.page = False
@@ -31,12 +34,6 @@ class Class_Name():
 
 
 
-
-
-
-    '''
-    --------------------------------------------------------------------------- class name page -------------------------------------------
-    '''
     def render(self):
         # parent object for page changes
         task_obj = self.app.renderer.schedule.task
@@ -50,22 +47,30 @@ class Class_Name():
         task_obj.page_outline.fill((50,50,50))
 
         # render day str
-        font_2_gold.render(schedule_obj.day_type.days_data[i][0],task_obj.page_surf,(int(task_obj.page_surf.get_width() * .1 ),5))
+        font_2_gold.render(schedule_obj.day_type.days_data[i].day,task_obj.page_surf,(int(task_obj.page_surf.get_width() * .05 ),int(task_obj.page_surf.get_height() * .05)))
 
         # intro 4
         if schedule_obj.intro[3]:
-            font_1_gold.render('This Is Where You ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47),int(task_obj.page_surf.get_height() * .05 )))
-            font_1_gold.render('Will Enter the',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .12 )))
-            font_1_gold.render('Class name to your',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .19 )))
-            font_1_gold.render('Assignment',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .26 )))
+            font_1_gold.render('This Is Where You ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47),int(task_obj.page_surf.get_height() * .15 )))
+            font_1_gold.render('Will Enter the',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .22 )))
+            font_1_gold.render('Class name to your',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
+            font_1_gold.render('Assignment',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .36 )))
 
-
+        # constrate on text len
+        if len(self.app.input.user_text) > 30:
+            self.app.input.user_text = self.app.input.user_text[:-1]
+        # display user text
+        font_1_black.render(self.app.input.user_text,task_obj.page_surf,(int(task_obj.page_surf.get_width() * .01 ),int(task_obj.page_surf.get_height() * .5 )))
 
 
         # submit tab
         if self.submit_tab.render(self.app.window.display):
-            self.days_data[i][0] = self.user_input
+            schedule_obj.day_type.days_data[i].temp[0] = self.app.input.user_text
+            # closes current page
             self.page = False
+            # opens currentclass_name_page and new event tab
+            parent_obj.page = True
+
 
 
 
