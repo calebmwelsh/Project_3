@@ -14,7 +14,7 @@ font_2_gold = Font(r'data\font\font_image.png',(218,169,108),2)
 
 
 
-class Assignment_Date():
+class Assignment_Score():
     def __init__(self,app):
         self.app = app
         self.load_imgs()
@@ -51,8 +51,7 @@ class Assignment_Date():
         if schedule_obj.intro[5]:
             font_1_gold.render('This Is Where You ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47),int(task_obj.page_surf.get_height() * .15 )))
             font_1_gold.render('Will Enter the',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .22 )))
-            font_1_gold.render('Assignment Due ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
-            font_1_gold.render('Date',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .36 )))
+            font_1_gold.render('Assignment Score',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
 
         # constrate on text len
         if len(self.app.input.user_text) > 30:
@@ -63,7 +62,7 @@ class Assignment_Date():
 
         # submit tab
         if self.submit_tab.render(self.app.window.display):
-            schedule_obj.day_type.days_data[i].temp[2] = self.app.input.user_text
+            schedule_obj.day_type.days_data[i].temp[0] = self.app.input.user_text
             # closes current page
             self.page = False
             # opens currentclass_name_page and new event tab
