@@ -9,7 +9,7 @@ colorkey = (0, 0, 0)
 def load_font_img(path,color,scale):
     global colorkey
     font_img = pygame.image.load(path)
-    font_img = pygame.transform.scale(font_img,(font_img.get_width() * scale,font_img.get_height() * scale))
+    font_img = pygame.transform.scale(font_img,(int(font_img.get_width() * scale),int(font_img.get_height() * scale)))
     img_list = []
     corners_list = []
     start_pos = 0
@@ -170,7 +170,7 @@ class Button_img():
         self.click = False
         self.val = False
 
-    def render(self,screen,rise=True):
+    def render(self,surf,rise=True):
         action = False
         pos_area = False
         # mouse pos
@@ -194,9 +194,9 @@ class Button_img():
 
         if rise == True:
             if pos_area == True:
-                screen.blit(self.image, (self.rect.x,self.rect.y - self.image.get_size()[1] * .3))
+                surf.blit(self.image, (self.rect.x,self.rect.y - self.image.get_size()[1] * .3))
             else:
-                screen.blit(self.image, self.rect)
+                surf.blit(self.image, self.rect)
         elif rise == False:
-            screen.blit(self.image, self.rect)
+            surf.blit(self.image, self.rect)
         return action

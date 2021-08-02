@@ -108,7 +108,7 @@ config = {
                 # window open ------------------------ #
                 {
                 # base resoultion
-                'base_res': [ 300, 200 ],
+                'base_res': [ 450, 300 ],
                 # scaled resoultion
                 'scaled_res': 'full',
                 # offset for screen
