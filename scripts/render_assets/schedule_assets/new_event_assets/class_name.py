@@ -65,7 +65,7 @@ class Class_Name():
 
         # submit tab
         if self.submit_tab.render(self.app.window.display):
-            schedule_obj.day_type.days_data[i].temp[0] = self.app.input.user_text
+            schedule_obj.day_type.days_data[i].temp[2] = self.app.input.user_text
             # closes current page
             self.page = False
             # opens currentclass_name_page and new event tab
