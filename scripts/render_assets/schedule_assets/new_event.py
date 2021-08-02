@@ -29,8 +29,8 @@ class New_Event():
         self.class_name_tab = Button_text(font_1_white,'Class Name',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .4)),self.app,(182,141,90))
         # assigment name
         self.assignment_name_tab = Button_text(font_1_white,'Assignment Name',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
-        # assigment due date
-        self.assignment_date_tab = Button_text(font_1_white,'Assignment Due Date',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .8)),self.app,(182,141,90))
+        # assigment due score
+        self.assignment_score_tab = Button_text(font_1_white,'Assignment Due Score',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .8)),self.app,(182,141,90))
         # submit tab
         self.submit_tab = Button_text(font_1_white,'Submit',(int(self.app.window.display.get_width() * .66),int(self.app.window.display.get_height() * .7)),self.app,(182,141,90))
         # submit error
@@ -65,15 +65,15 @@ class New_Event():
 
 
         # check marks if class name section is completed
-        if type(schedule_obj.day_type.days_data[i].temp[0]) == str :
+        if type(schedule_obj.day_type.days_data[i].temp[2]) == str :
             self.app.window.display.blit(self.check_img,(int(self.app.window.display.get_width() * .4),int(self.app.window.display.get_height() * .35)))
 
         # check marks if assignment name section is completed
         if type(schedule_obj.day_type.days_data[i].temp[1]) == str:
             self.app.window.display.blit(self.check_img,(int(self.app.window.display.get_width() * .47),int(self.app.window.display.get_height() * .57)))
 
-        # check marks if assignment date section is completed
-        if type(schedule_obj.day_type.days_data[i].temp[2]) == str :
+        # check marks if assignment score section is completed
+        if type(schedule_obj.day_type.days_data[i].temp[0]) == str :
             self.app.window.display.blit(self.check_img,(int(self.app.window.display.get_width() * .53),int(self.app.window.display.get_height() * .75)))
 
 
@@ -92,9 +92,9 @@ class New_Event():
             self.app.renderer.schedule.intro[2] = False
 
         # enter time of assignment
-        if self.assignment_date_tab.render(self.app.window.display):
+        if self.assignment_score_tab.render(self.app.window.display):
             self.app.input.user_text = ''
-            schedule_obj.assignment_date.page = True
+            schedule_obj.assignment_score.page = True
             self.page = False
             self.app.renderer.schedule.intro[2] = False
 

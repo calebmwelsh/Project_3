@@ -12,7 +12,7 @@ from .schedule_assets.current_events import Current_Events
 # pages on pages lol
 from .schedule_assets.new_event_assets.class_name import Class_Name
 from .schedule_assets.new_event_assets.assignment_name import Assignment_Name
-from .schedule_assets.new_event_assets.assignment_date import Assignment_Date
+from .schedule_assets.new_event_assets.assignment_score import Assignment_Score
 
 
 
@@ -42,7 +42,7 @@ class Schedule():
         # asssignment name page
         self.assignment_name = Assignment_Name(app)
         # assigment due data page
-        self.assignment_date = Assignment_Date(app)
+        self.assignment_score = Assignment_Score(app)
         self.load_imgs()
         self.init_obj()
 
@@ -164,8 +164,8 @@ class Schedule():
         ------------ assignment due date page ------------
         '''
         # if user choses to input assignment due date
-        if self.assignment_date.page:
-            self.assignment_date.render()
+        if self.assignment_score.page:
+            self.assignment_score.render()
         '''
         ------------- current events page --------------
         '''
