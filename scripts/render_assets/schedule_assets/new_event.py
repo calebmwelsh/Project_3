@@ -108,6 +108,7 @@ class New_Event():
             if submit:
                 schedule_obj.day_type.days_data[i].add_event()
                 self.page = False
+                schedule_obj.day_type.days_data[i].data.sort()
             else:
                 self.error = True
 
