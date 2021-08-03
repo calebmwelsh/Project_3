@@ -31,16 +31,19 @@ class Menu():
         self.menu_tab_1 = Button_text(font_1_white,'Schedule',(20,45),self.app,(182,141,90))
         self.menu_tab_2 = Button_text(font_1_white,'Homework',(120,45),self.app,(182,141,90))
         self.menu_tab_3 = Button_text(font_1_white,'Groups',(220,45),self.app,(182,141,90))
-        #self.tab_4 = Button_text(font_1_white,'Schedule',(20,50),self.app,(182,141,90))
+        self.menu_tab_4 = Button_text(font_1_white,'Game',(330,45),self.app,(182,141,90))
+        self.tabs = [self.menu_tab_1,self.menu_tab_2,self.menu_tab_3,self.menu_tab_4]
+
 
     '''
     -------------------------------------------- menu page ------------------------------------------------------------
     '''
     def render(self):
         # tabs
-        if self.menu_tab_1.render(self.app.window.display):
-            self.renderer.page = 'schedule'
-        if self.menu_tab_2.render(self.app.window.display):
-            self.renderer.page = 'homework'
-        if self.menu_tab_3.render(self.app.window.display):
-            self.renderer.page = 'groups'
+        for i,tab in enumerate(self.tabs):
+            if tab.render(self.app.window.display):
+                self.app.renderer.page = tab.str.lower()
+
+
+        # message
+        font_2_gold.render('Click One of the Tabs Above!',self.app.window.display,(int(self.app.window.display.get_width() * .005 ),int(self.app.window.display.get_height() * .25 )))

@@ -26,7 +26,8 @@ class Homework():
         self.homework_tab_1 = Button_text(font_1_white,'Home',(20,45),self.app,(182,141,90))
         self.homework_tab_2 = Button_text(font_1_white,'Schedule',(120,45),self.app,(182,141,90))
         self.homework_tab_3 = Button_text(font_1_white,'Groups',(220,45),self.app,(182,141,90))
-        #self.tab_4 = Button_text(font_1_white,'Schedule',(20,50),self.app,(182,141,90))
+        self.homework_tab_4 = Button_text(font_1_white,'Game',(320,45),self.app,(182,141,90))
+        self.tabs = [self.homework_tab_1,self.homework_tab_2,self.homework_tab_3,self.homework_tab_4]
 
         # ------------------------------------------------------------------------------ #
 
@@ -35,9 +36,9 @@ class Homework():
     '''
     def render(self):
         # tabs
-        if self.homework_tab_1.render(self.app.window.display):
-            self.renderer.page = 'menu'
-        if self.homework_tab_2.render(self.app.window.display):
-            self.renderer.page = 'schedule'
-        if self.homework_tab_3.render(self.app.window.display):
-            self.renderer.page = 'groups'
+        for i,tab in enumerate(self.tabs):
+            if tab.render(self.app.window.display):
+                self.app.renderer.page = tab.str.lower()
+
+        # message
+        font_2_gold.render('Homework Tab Coming Soon',self.app.window.display,(int(self.app.window.display.get_width() * .005 ),int(self.app.window.display.get_height() * .25 )))

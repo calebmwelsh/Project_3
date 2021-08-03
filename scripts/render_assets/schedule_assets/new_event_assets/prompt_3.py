@@ -14,7 +14,7 @@ font_2_gold = Font(r'data\font\font_image.png',(218,169,108),2)
 
 
 
-class Assignment_Name():
+class Prompt_3():
     def __init__(self,app):
         self.app = app
         self.load_imgs()
@@ -46,18 +46,15 @@ class Assignment_Name():
         task_obj.page_outline.fill((50,50,50))
 
         # render day str
-        font_2_gold.render(schedule_obj.day_type.days_data[i].day,task_obj.page_surf,(int(task_obj.page_surf.get_width() * .05 ),int(task_obj.page_surf.get_height() * .05)))
+        font_2_gold.render(schedule_obj.day_type.days_of_the_week[i],task_obj.page_surf,(int(task_obj.page_surf.get_width() * .05 ),int(task_obj.page_surf.get_height() * .05)))
 
-
-        # intro 5
-        if schedule_obj.intro[4]:
+        # intro 6
+        if schedule_obj.intro[5]:
             font_1_gold.render('This Is Where You ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47),int(task_obj.page_surf.get_height() * .15 )))
             font_1_gold.render('Will Enter the',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .22 )))
-            font_1_gold.render('Assignment Name to ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
-            font_1_gold.render('your Assignment',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .36 )))
+            font_1_gold.render('Assignment Score',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
 
 
-        # type rect display
         pygame.draw.rect(task_obj.page_surf,(182,141,90),self.type_rect)
 
         # constrate on text len
@@ -70,7 +67,7 @@ class Assignment_Name():
 
         # submit tab
         if self.submit_tab.render(self.app.window.display):
-            schedule_obj.day_type.days_data[i].temp[1] = self.app.input.user_text
+            schedule_obj.day_type.days_data_temp[0] = self.app.input.user_text
             # closes current page
             self.page = False
             # opens currentclass_name_page and new event tab

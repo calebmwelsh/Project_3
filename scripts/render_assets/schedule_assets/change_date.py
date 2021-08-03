@@ -51,14 +51,15 @@ class Change_Date():
                 self.page = False
                 # tiem ajustment
                 schedule_obj.user_day_idx = i
-                schedule_obj.user_day_of_week = schedule_obj.day_type.days_data[i].day
+                schedule_obj.user_day_of_week = schedule_obj.day_type.days_of_the_week[i]
                 idx = schedule_obj.user_day_idx - schedule_obj.day_idx
                 if idx < 0:
                     idx = idx + 7
                 delta = datetime.timedelta(days=idx)
                 schedule_obj.user_tday = schedule_obj.tday + delta
-                schedule_obj.user_day_of_week = schedule_obj.day_type.days_data[schedule_obj.user_tday.weekday()].day
+                schedule_obj.user_day_of_week = schedule_obj.day_type.days_of_the_week[schedule_obj.user_tday.weekday()]
                 schedule_obj.user_num_date = str(schedule_obj.user_tday.month) + ' / ' + str(schedule_obj.user_tday.day) + ' / ' + str(schedule_obj.user_tday.year)
+                schedule_obj.event_close()
 
 
 
