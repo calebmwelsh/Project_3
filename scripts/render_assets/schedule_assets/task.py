@@ -27,7 +27,6 @@ class Task():
     def init_obj(self):
         # task open close var
         self.page = False
-        self.rendering = True
         # task page surface and outline
         self.page_surf = pygame.surface.Surface((self.app.window.display.get_width() // 2 ,self.app.window.display.get_height() // 1.5 ))
         self.page_surf.fill((240, 255, 255))

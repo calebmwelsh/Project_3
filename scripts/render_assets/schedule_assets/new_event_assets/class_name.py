@@ -31,6 +31,7 @@ class Class_Name():
     def init_obj(self):
         self.page = False
         self.submit_tab = Button_text(font_1_white,'Submit',(int(self.app.window.display.get_width() * .66),int(self.app.window.display.get_height() * .7)),self.app,(182,141,90))
+        self.type_rect = pygame.rect.Rect(int(self.app.window.display.get_width() * 0),int(self.app.window.display.get_height() * .31), int(self.app.window.display.get_width() * .5),int(self.app.window.display.get_height() * .1 ))
 
 
 
@@ -55,6 +56,9 @@ class Class_Name():
             font_1_gold.render('Will Enter the',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .22 )))
             font_1_gold.render('Class name to your',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
             font_1_gold.render('Assignment',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .36 )))
+
+        # type rect display
+        pygame.draw.rect(task_obj.page_surf,(182,141,90),self.type_rect)
 
         # constrate on text len
         if len(self.app.input.user_text) > 30:

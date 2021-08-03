@@ -29,6 +29,7 @@ class Assignment_Name():
     def init_obj(self):
         self.page = False
         self.submit_tab = Button_text(font_1_white,'Submit',(int(self.app.window.display.get_width() * .66),int(self.app.window.display.get_height() * .7)),self.app,(182,141,90))
+        self.type_rect = pygame.rect.Rect(int(self.app.window.display.get_width() * 0),int(self.app.window.display.get_height() * .31), int(self.app.window.display.get_width() * .5),int(self.app.window.display.get_height() * .1 ))
 
 
 
@@ -55,11 +56,16 @@ class Assignment_Name():
             font_1_gold.render('Assignment Name to ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
             font_1_gold.render('your Assignment',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .36 )))
 
+
+        # type rect display
+        pygame.draw.rect(task_obj.page_surf,(182,141,90),self.type_rect)
+
         # constrate on text len
         if len(self.app.input.user_text) > 30:
             self.app.input.user_text = self.app.input.user_text[:-1]
         # display user text
         font_1_black.render(self.app.input.user_text,task_obj.page_surf,(int(task_obj.page_surf.get_width() * .01 ),int(task_obj.page_surf.get_height() * .5 )))
+
 
 
         # submit tab
