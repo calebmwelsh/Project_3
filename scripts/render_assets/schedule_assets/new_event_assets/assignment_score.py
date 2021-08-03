@@ -29,7 +29,7 @@ class Assignment_Score():
     def init_obj(self):
         self.page = False
         self.submit_tab = Button_text(font_1_white,'Submit',(int(self.app.window.display.get_width() * .66),int(self.app.window.display.get_height() * .7)),self.app,(182,141,90))
-        self.type_rect = pygame.rect.Rect(int(self.app.window.display.get_width() * .3 ),int(self.app.window.display.get_height() * .5), int(self.app.window.display.get_width() * .5),int(self.app.window.display.get_height() * .1 ))
+        self.type_rect = pygame.rect.Rect(int(self.app.window.display.get_width() * 0),int(self.app.window.display.get_height() * .31), int(self.app.window.display.get_width() * .5),int(self.app.window.display.get_height() * .1 ))
 
 
 
@@ -55,7 +55,7 @@ class Assignment_Score():
             font_1_gold.render('Assignment Score',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
 
 
-        pygame.draw.rect(self.app.window.display,(182,141,90),self.type_rect)
+        pygame.draw.rect(task_obj.page_surf,(182,141,90),self.type_rect)
 
         # constrate on text len
         if len(self.app.input.user_text) > 30:
