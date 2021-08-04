@@ -30,7 +30,7 @@ class New_Event():
         # assigment name
         self.prompt_2_tab = Button_text(font_1_white,'Task Notes',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
         # assigment due score
-        self.prompt_3_tab = Button_text(font_1_white,'Task Occurance',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .8)),self.app,(182,141,90))
+        self.prompt_3_tab = Button_text(font_1_white,'Task Duration',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .8)),self.app,(182,141,90))
         # submit tab
         self.submit_tab = Button_text(font_1_white,'Submit',(int(self.app.window.display.get_width() * .66),int(self.app.window.display.get_height() * .7)),self.app,(182,141,90))
         # submit error
@@ -106,10 +106,14 @@ class New_Event():
                 if type(v) != str:
                     submit = False
             if submit:
+                int(schedule_obj.day_type.days_data_temp[0])
+                print(schedule_obj.day_type.days_data_temp)
                 schedule_obj.day_type.days_data[i].append(schedule_obj.day_type.days_data_temp)
                 self.page = False
                 print(schedule_obj.day_type.days_data[i])
                 schedule_obj.day_type.days_data[i].sort()
+                print(schedule_obj.day_type.days_data[i])
+                schedule_obj.day_type.days_data[i].reverse()
                 print(schedule_obj.day_type.days_data[i])
                 schedule_obj.event_close()
                 self.app.renderer.schedule.day_type.data_manager.write(r'data\files\json\user_data.json')
