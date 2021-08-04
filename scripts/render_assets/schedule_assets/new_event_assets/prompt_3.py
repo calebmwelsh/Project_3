@@ -52,7 +52,7 @@ class Prompt_3():
         if schedule_obj.intro[5]:
             font_1_gold.render('This Is Where You ',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47),int(task_obj.page_surf.get_height() * .15 )))
             font_1_gold.render('Will Enter the',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .22 )))
-            font_1_gold.render('Assignment Score',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
+            font_1_gold.render('Task Occurance',task_obj.page_surf,(int(task_obj.page_surf.get_width() * .47 ),int(task_obj.page_surf.get_height() * .29 )))
 
 
         pygame.draw.rect(task_obj.page_surf,(182,141,90),self.type_rect)
