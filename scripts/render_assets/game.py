@@ -49,6 +49,7 @@ class Game():
         self.numbery = 60
         self.game_init = True
         self.win = False
+        self.pos = [0,0]
 
 
     def load_imgs(self):
@@ -77,10 +78,10 @@ class Game():
                 # create spark explosion
                 angle = math.radians(random.randint(1,360))
                 if type == 's':
-                    speed = 7 + random.randint(70,150)/15
+                    speed = 7 + random.randint(7,15)/15
                 else:
                     speed = 7
-                self.sparks_manager.new(self.pos,angle,speed,3,(246, 237, 205),type)
+                self.sparks_manager.new(self.pos,angle,speed,3,(150, 200, 140),type)
             for i in range(360):
                 # create particle explosion
                 angle = i
@@ -91,10 +92,12 @@ class Game():
 
     # when game page loads
     def init_game(self):
+        self.reset()
         # mouse button change
         self.app.window.mouse_img = self.smily_img
         pygame.mouse.set_visible(False)
         self.game_init = False
+
 
 
     def update(self):
@@ -106,12 +109,17 @@ class Game():
         # increase difficulty
         self.numbery = self.game_timer // 300
         num = int(60 - self.numbery)
-        if num > 0:
+        if num > 0 :
             if random.randint(1,num) == 1:
                 for i in range(2):
                     self.projectiles_manager.new('img_0', (
                     self.app.window.display.get_width() * random.random() , self.app.window.display.get_height() * .25),
                                                (random.randint(50, 150) / 100 - 1, random.randint(10,30) / 10), random.random(), 'enemy',(6,3,2))
+
+        # if cheating
+        if self.pos[1] < self.app.window.display.get_height() * .25:
+            self.projectiles_manager.reset()
+            self.game_timer = 0
 
         # check for collision with player
 
