@@ -167,7 +167,7 @@ class ParticleManager():
             # if glow type
             if p.type == 'green_light':
                 color = (3,6,4)
-                surf = p.glow(game_time,color,3)
+                surf = p.glow(game_time,color,1)
                 core_fucs.blit_center_special(display, surf, (p.pos[0] + 3 - scroll[0], p.pos[1] - scroll[1]))
             if p.type == 'yellow_light':
                 color = (20, 15, 1)

@@ -68,4 +68,5 @@ class Renderer():
             self.groups.render()
         # groups page
         elif self.page == 'game':
+            self.game.update()
             self.game.render()
