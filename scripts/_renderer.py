@@ -5,7 +5,7 @@ from .render_assets.schedule import Schedule
 from .render_assets.homework import Homework
 from .render_assets.groups import Groups
 from .render_assets.menu import Menu
-
+from .render_assets.game import Game
 
 COLORKEY = (0,0,0)
 
@@ -23,7 +23,8 @@ class Renderer():
         self.homework = Homework(app,self)
         self.groups = Groups(app,self)
         self.menu = Menu(app,self)
-        self.page = 'menu'
+        self.game = Game(app)
+        self.page = 'home'
         self.init_obj()
 
 
@@ -54,7 +55,7 @@ class Renderer():
         # render constant objects
         self.perm_render()
         # menu page
-        if self.page == 'menu':
+        if self.page == 'home':
             self.menu.render()
         # schedule page
         elif self.page == 'schedule':
@@ -65,3 +66,7 @@ class Renderer():
         # groups page
         elif self.page == 'groups':
             self.groups.render()
+        # groups page
+        elif self.page == 'game':
+            self.game.update()
+            self.game.render()

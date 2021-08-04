@@ -26,11 +26,11 @@ class New_Event():
     def init_obj(self):
         self.page = False
         # class name tab
-        self.class_name_tab = Button_text(font_1_white,'Class Name',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .4)),self.app,(182,141,90))
+        self.prompt_1_tab = Button_text(font_1_white,'Task Name',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .4)),self.app,(182,141,90))
         # assigment name
-        self.assignment_name_tab = Button_text(font_1_white,'Assignment Name',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
+        self.prompt_2_tab = Button_text(font_1_white,'Task Notes',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
         # assigment due score
-        self.assignment_score_tab = Button_text(font_1_white,'Assignment Due Score',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .8)),self.app,(182,141,90))
+        self.prompt_3_tab = Button_text(font_1_white,'Task Occurance',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .8)),self.app,(182,141,90))
         # submit tab
         self.submit_tab = Button_text(font_1_white,'Submit',(int(self.app.window.display.get_width() * .66),int(self.app.window.display.get_height() * .7)),self.app,(182,141,90))
         # submit error
@@ -48,7 +48,7 @@ class New_Event():
         task_obj.page_outline.fill((50,50,50))
 
         # render day str
-        font_2_gold.render(schedule_obj.day_type.days_data[i].day,task_obj.page_surf,(int(task_obj.page_surf.get_width() * .05 ),int(task_obj.page_surf.get_height() * .05 )))
+        font_2_gold.render(schedule_obj.day_type.days_of_the_week[i],task_obj.page_surf,(int(task_obj.page_surf.get_width() * .05 ),int(task_obj.page_surf.get_height() * .05 )))
 
 
         # intro 3
@@ -65,36 +65,36 @@ class New_Event():
 
 
         # check marks if class name section is completed
-        if type(schedule_obj.day_type.days_data[i].temp[2]) == str :
+        if type(schedule_obj.day_type.days_data_temp[2]) == str :
             self.app.window.display.blit(self.check_img,(int(self.app.window.display.get_width() * .4),int(self.app.window.display.get_height() * .35)))
 
         # check marks if assignment name section is completed
-        if type(schedule_obj.day_type.days_data[i].temp[1]) == str:
+        if type(schedule_obj.day_type.days_data_temp[1]) == str:
             self.app.window.display.blit(self.check_img,(int(self.app.window.display.get_width() * .47),int(self.app.window.display.get_height() * .57)))
 
         # check marks if assignment score section is completed
-        if type(schedule_obj.day_type.days_data[i].temp[0]) == str :
+        if type(schedule_obj.day_type.days_data_temp[0]) == str :
             self.app.window.display.blit(self.check_img,(int(self.app.window.display.get_width() * .53),int(self.app.window.display.get_height() * .75)))
 
 
         # the class name of the assignment
-        if self.class_name_tab.render(self.app.window.display):
+        if self.prompt_1_tab.render(self.app.window.display):
             self.app.input.user_text = ''
-            schedule_obj.class_name.page = True
+            schedule_obj.prompt_1.page = True
             self.page = False
             self.app.renderer.schedule.intro[2] = False
 
         # enter name of assignment
-        if self.assignment_name_tab.render(self.app.window.display):
+        if self.prompt_2_tab.render(self.app.window.display):
             self.app.input.user_text = ''
-            schedule_obj.assignment_name.page = True
+            schedule_obj.prompt_2.page = True
             self.page = False
             self.app.renderer.schedule.intro[2] = False
 
         # enter time of assignment
-        if self.assignment_score_tab.render(self.app.window.display):
+        if self.prompt_3_tab.render(self.app.window.display):
             self.app.input.user_text = ''
-            schedule_obj.assignment_score.page = True
+            schedule_obj.prompt_3.page = True
             self.page = False
             self.app.renderer.schedule.intro[2] = False
 
@@ -102,13 +102,17 @@ class New_Event():
         if self.submit_tab.render(self.app.window.display):
             submit = True
             # checks if all arguments are str
-            for j, v in enumerate(schedule_obj.day_type.days_data[i].temp):
+            for j, v in enumerate(schedule_obj.day_type.days_data_temp):
                 if type(v) != str:
                     submit = False
             if submit:
-                schedule_obj.day_type.days_data[i].add_event()
+                schedule_obj.day_type.days_data[i].append(schedule_obj.day_type.days_data_temp)
                 self.page = False
-                schedule_obj.day_type.days_data[i].data.sort()
+                print(schedule_obj.day_type.days_data[i])
+                schedule_obj.day_type.days_data[i].sort()
+                print(schedule_obj.day_type.days_data[i])
+                schedule_obj.event_close()
+                self.app.renderer.schedule.day_type.data_manager.write(r'data\files\json\user_data.json')
             else:
                 self.error = True
 

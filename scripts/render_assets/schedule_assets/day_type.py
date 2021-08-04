@@ -3,7 +3,7 @@ from ...text import Font
 from ...text import Button_text
 from ...text import Button_img
 from ...core_fucs import *
-from .user_data import User_Data
+from ..schedule_assets.json_data import Data_Manager
 
 COLORKEY = (0,0,0)
 
@@ -17,6 +17,8 @@ font_2_gold = Font(r'data\font\font_image.png',(218,169,108),2)
 class Day_Type():
     def __init__(self,app):
         self.app = app
+        # data manager
+        self.data_manager = Data_Manager(app)
         self.load_imgs()
         self.init_obj()
 
@@ -26,32 +28,47 @@ class Day_Type():
 
     def init_obj(self):
         self.page = False
-        # users days data
+        # temp list of data
+        self.days_data_temp = [0,0,0]
         # [day, class name, assignment due date, assigment name]
-        self.monday_data = User_Data('Monday')
-        self.tuesday_data = User_Data('Tuesday')
-        self.wednesday_data = User_Data('Wednesday')
-        self.thursday_data = User_Data('Thursday')
-        self.friday_data = User_Data('Friday')
-        self.saturday_data = User_Data('Saturday')
-        self.sunday_data = User_Data('Sunday')
-        # list of all day data
-        self.days_data = [self.monday_data,self.tuesday_data,self.wednesday_data,self.thursday_data,self.friday_data,self.saturday_data,self.sunday_data]
+        self.days_of_the_week =  ['Monday','Tuesday','Wednesday','Thurdsay','Friday','Saturday','Sunday']
+        try:
+            # users days data
+            db_data =  self.data_manager.load(r'data\files\json\user_data.json')
+            self.monday_data = db_data[0]
+            self.tuesday_data = db_data[1]
+            self.wednesday_data = db_data[2]
+            self.thursday_data = db_data[3]
+            self.friday_data = db_data[4]
+            self.saturday_data = db_data[5]
+            self.sunday_data = db_data[6]
+            # list of all day data
+            self.days_data = [self.monday_data,self.tuesday_data,self.wednesday_data,self.thursday_data,self.friday_data,self.saturday_data,self.sunday_data]
+        except:
+            self.monday_data = []
+            self.tuesday_data = []
+            self.wednesday_data = []
+            self.thursday_data = []
+            self.friday_data = []
+            self.saturday_data = []
+            self.sunday_data = []
+            # list of all day data
+            self.days_data = [self.monday_data,self.tuesday_data,self.wednesday_data,self.thursday_data,self.friday_data,self.saturday_data,self.sunday_data]
 
 
         # new event for users
-        self.new_event_tab = Button_text(font_1_white,'New Event',(int(self.app.window.display.get_width() * .25),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
-        # page var for new event
-        self.new_event_page = [False,0,0]
+        self.new_event_tab = Button_text(font_1_white,'New Event',(int(self.app.window.display.get_width() * .4),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
+
 
         # current event for users
-        self.current_event_tab = Button_text(font_1_white,'Current Events',(int(self.app.window.display.get_width() * .5),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
+        #self.current_event_tab = Button_text(font_1_white,'Current Events',(int(self.app.window.display.get_width() * .5),int(self.app.window.display.get_height() * .6)),self.app,(182,141,90))
         # page var for current event
         self.current_event_page = [False,0,0]
 
 
 
     def render(self):
+        self.days_data_temp = [0,0,0]
         parent_obj = self.app.renderer.schedule.task
         i = parent_obj.current_day_idx
         # surf and outline of task page
@@ -62,14 +79,14 @@ class Day_Type():
 
 
         # render day str
-        font_2_gold.render(self.days_data[i].day,parent_obj.page_surf,(int(parent_obj.page_surf.get_width() * .05 ),int(parent_obj.page_surf.get_height() * .05 )))
+        font_2_gold.render(self.days_of_the_week[i],parent_obj.page_surf,(int(parent_obj.page_surf.get_width() * .05 ),int(parent_obj.page_surf.get_height() * .05 )))
 
 
         # intro 2
         if self.app.renderer.schedule.intro[1]:
             font_1_gold.render('Select New Event or Current',parent_obj.page_surf,(int(parent_obj.page_surf.get_width() * .1),int(parent_obj.page_surf.get_height() * .15 )))
             font_1_gold.render('Events to see your',parent_obj.page_surf,(int(parent_obj.page_surf.get_width() * .1 ),int(parent_obj.page_surf.get_height() * .22 )))
-            font_1_gold.render(f'schedule on {self.days_data[i].day}',parent_obj.page_surf,(int(parent_obj.page_surf.get_width() * .1 ),int(parent_obj.page_surf.get_height() * .29 )))
+            font_1_gold.render(f'schedule on {self.days_of_the_week[i]}',parent_obj.page_surf,(int(parent_obj.page_surf.get_width() * .1 ),int(parent_obj.page_surf.get_height() * .29 )))
 
         # user creates new event for selected day
         if self.new_event_tab.render(self.app.window.display):
@@ -78,10 +95,11 @@ class Day_Type():
             self.app.renderer.schedule.intro[1] = False
 
         # user access their cuurent events for selected day
+        '''
         if self.current_event_tab.render(self.app.window.display):
             self.app.renderer.schedule.current_events.page = True
             parent_obj.days_pages[i] = False
-            self.app.renderer.schedule.intro[1] = False
+            self.app.renderer.schedule.intro[1] = False'''
 
 
         # event to close task page
