@@ -166,7 +166,7 @@ class Schedule():
             # date display
             font_1_gold.render(self.user_num_date,self.app.window.display,(int(self.app.window.display.get_width() * .83 ),int(self.app.window.display.get_height() * .31 )))
             if self.day_type.days_data[self.user_day_idx] == []:
-                font_1_gold.render(f'You have not events on {self.user_day_of_week}',self.app.window.display,(int(self.app.window.display.get_width() * .005 ),int(self.app.window.display.get_height() * .4 )))
+                font_1_gold.render(f'You have no events on {self.user_day_of_week}',self.app.window.display,(int(self.app.window.display.get_width() * .005 ),int(self.app.window.display.get_height() * .4 )))
             else:
                 pre_len = 0
                 for i, event in enumerate(self.day_type.days_data[self.user_day_idx]):
@@ -208,7 +208,7 @@ class Schedule():
             # date display
             font_1_gold.render(self.num_date,self.app.window.display,(int(self.app.window.display.get_width() * .83 ),int(self.app.window.display.get_height() * .31 )))
             if self.day_type.days_data[self.day_idx] == []:
-                font_1_gold.render(f'You have not events today',self.app.window.display,(int(self.app.window.display.get_width() * .005 ),int(self.app.window.display.get_height() * .4 )))
+                font_1_gold.render(f'You have no events today',self.app.window.display,(int(self.app.window.display.get_width() * .005 ),int(self.app.window.display.get_height() * .4 )))
             else:
                 pre_len = 0
                 for i, event in enumerate(self.day_type.days_data[self.day_idx]):
