@@ -98,7 +98,7 @@ class Schedule():
                 # find the longest length to create the surf for sections
                 length = 0
                 for section in event:
-                    length = max(font_1_black.get_size(section),length)
+                    length = max(font_1_black.get_size(str(section)),length)
                 width = max(length + self.app.window.display.get_width() * .01,self.app.window.display.get_width() * .2)
 
                 # button
@@ -114,7 +114,7 @@ class Schedule():
                 # find the longest length to create the surf for sections
                 length = 0
                 for section in event:
-                    length = max(font_1_black.get_size(section),length)
+                    length = max(font_1_black.get_size(str(section)),length)
                 width = max(length + self.app.window.display.get_width() * .01,self.app.window.display.get_width() * .2)
 
                 # button
@@ -173,7 +173,7 @@ class Schedule():
                     # find the longest length to create the surf for sections
                     length = 0
                     for section in event:
-                        length = max(font_1_black.get_size(section),length)
+                        length = max(font_1_black.get_size(str(section)),length)
                     # create surf
                     width = max(length + self.app.window.display.get_width() * .01,self.app.window.display.get_width() * .2)
                     surf = pygame.surface.Surface((width, self.app.window.display.get_height() * .38 ))
@@ -215,7 +215,7 @@ class Schedule():
                     # find the longest length to create the surf for sections
                     length = 0
                     for section in event:
-                        length = max(font_1_black.get_size(section),length)
+                        length = max(font_1_black.get_size(str(section)),length)
 
                     # create surf
                     width = max(length + self.app.window.display.get_width() * .01,self.app.window.display.get_width() * .2)
@@ -237,7 +237,7 @@ class Schedule():
 
                     # render text
                     font_1_black.render('Task Occurance:',self.app.window.display,(int(self.app.window.display.get_width() * .008 + pre_len),int(self.app.window.display.get_height() * .45 )))
-                    font_1_black.render(event[0],self.app.window.display,(int(self.app.window.display.get_width() * .008 + pre_len),int(self.app.window.display.get_height() * .5 )))
+                    font_1_black.render(str(event[0]),self.app.window.display,(int(self.app.window.display.get_width() * .008 + pre_len),int(self.app.window.display.get_height() * .5 )))
                     font_1_black.render('Task Name:',self.app.window.display,(int(self.app.window.display.get_width() * .008 + pre_len),int(self.app.window.display.get_height() * .55 )))
                     font_1_black.render(event[2],self.app.window.display,(int(self.app.window.display.get_width() * .008 + pre_len),int(self.app.window.display.get_height() * .6 )))
                     font_1_black.render('Task Notes:',self.app.window.display,(int(self.app.window.display.get_width() * .008 + pre_len),int(self.app.window.display.get_height() * .65 )))

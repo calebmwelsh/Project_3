@@ -106,7 +106,7 @@ class New_Event():
                 if type(v) != str:
                     submit = False
             if submit:
-                int(schedule_obj.day_type.days_data_temp[0])
+                schedule_obj.day_type.days_data_temp[0] = int(schedule_obj.day_type.days_data_temp[0])
                 print(schedule_obj.day_type.days_data_temp)
                 schedule_obj.day_type.days_data[i].append(schedule_obj.day_type.days_data_temp)
                 self.page = False
