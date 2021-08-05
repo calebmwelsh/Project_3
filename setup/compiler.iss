@@ -39,9 +39,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "C:\Users\caleb\online_school_projects\purdue\Project_3\excutable\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\caleb\online_school_projects\purdue\Project_3\data\files\*"; DestDir: "{app}\data\files"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\caleb\online_school_projects\purdue\Project_3\data\font\*"; DestDir: "{app}\data\fonts"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\caleb\online_school_projects\purdue\Project_3\data\font\*"; DestDir: "{app}\data\font"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Users\caleb\online_school_projects\purdue\Project_3\data\images\*"; DestDir: "{app}\data\images"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\caleb\online_school_projects\purdue\Project_3\data\sounds\*"; DestDir: "{app}\data\sounds"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
